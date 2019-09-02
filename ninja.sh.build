@@ -1,0 +1,7 @@
+#/bin/bash
+ninja -C out/Release/ sogou_webview_build
+if [[ $? -ne 0 ]];then
+echo "xxxxxxxxxxxx buiding error xxxxxxxxxxxxxxxxxxxxx" 
+exit -1
+fi
+echo "============ buiding success =================="

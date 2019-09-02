@@ -1,0 +1,2 @@
+#/bin/sh
+adb shell logcat $1 | grep sogou-video --color=auto

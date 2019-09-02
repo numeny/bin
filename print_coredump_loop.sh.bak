@@ -1,0 +1,32 @@
+#!/bin/bash
+ANDROID_PATH=/home/bdg/ssd/android/AndroidSource
+DIR_PATH=${ANDROID_PATH}/out/target/product/generic/symbols/system/lib/
+LIB_NAME=libsogouwebcore.so
+if [[ $# -ne 1 && $# -ne 0 && $# -ne 2 ]]
+then
+  echo "[usage] $0 [lib_name] [func_address]"
+  exit 0
+fi
+#echo DIR_PATH=$DIR_PATH
+#echo LIB_NAME=$LIB_NAME
+#echo FUNC_ADDRESS=$FUNC_ADDRESS
+if [[ $# -eq 1 || $# -eq 2 ]]
+then
+#${ANDROID_PATH}/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-addr2line -C -f -e ${DIR_PATH}/${LIB_NAME} ${FUNC_ADDRESS}
+while read line
+do
+if [[ $# -eq 1 ]]
+then
+${ANDROID_PATH}/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-addr2line -C -f -e ${DIR_PATH}/${LIB_NAME} `echo $line | awk '{print $4}' | sed -n '1p'`
+else
+${ANDROID_PATH}/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-addr2line -C -f -e ${DIR_PATH}/${LIB_NAME} `echo $line | awk '{print $6}' | sed -n '1p'`
+fi
+
+done < $1
+else
+while [[ 1 ]]
+do
+read FUNC_ADDRESS
+${ANDROID_PATH}/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-addr2line -C -f -e ${DIR_PATH}/${LIB_NAME} ${FUNC_ADDRESS}
+done
+fi

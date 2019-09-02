@@ -1,0 +1,3 @@
+set solib-absolute-prefix /home/bdg/ssd/bak/AndroidSource/out/target/product/generic/symbols/system/lib/
+set solib-search-path /home/bdg/ssd/bak/AndroidSource/out/target/product/generic/symbols/system/lib/
+target remote :5039

@@ -1,0 +1,15 @@
+#/bin/bash
+#export SHELL_PATH=/home/bdg/ssd/chromium_56.0.2924.116/
+export SHELL_PATH=/home/bdg/ssd/shell/chromium_68.0.3440.106/
+
+#rm out/Release/libs_prebuilt/libs/ out/Release/libs_prebuilt/res/ -rf
+. sogou_webview/envsetup.sh
+echo "building ..."
+cd sogou_webview/awp_demo/
+gradle assemble
+if [[ $# -ne 0 ]];then
+echo "gradle assemble ... Error"
+    exit -1;
+fi
+ls -l out/AWPDemo-debug.apk
+adb install -r out/AWPDemo-debug.apk

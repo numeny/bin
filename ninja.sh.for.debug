@@ -1,0 +1,9 @@
+#/bin/bash
+ninja -C out/Debug/ sogou_webview
+if [[ $? -ne 0 ]];then
+echo "xxxxxxxxxxxx buiding error xxxxxxxxxxxxxxxxxxxxx" 
+exit -1
+fi
+cp ./out/Debug/gen/content_java/content_java.jar sogou_webkit/sogouwebview_delegate/libs/
+cp out/Debug/sogou_content_shell_apk/libs/armeabi-v7a/libsogou_content_shell_content_view.so.lzma sogou_webkit/sogouwebview_delegate/res/raw/
+echo "============ buiding success =================="

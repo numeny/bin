@@ -1,0 +1,26 @@
+#!/bin/bash
+
+findSymbol(){
+for i in $1/*
+do
+	if [ -d "$i" ];
+	then  
+		findSymbol "$i" $2
+	else 
+		case "$i" in
+		*.o)
+			;;
+		*.a) 
+			arm-linux-androideabi-nm $i | grep "$2" &&  echo -e '\033[0;35;1m/'$i/'\033[0m'
+			;;
+		*.so)
+			echo $i | grep -q "symbols/system" && (arm-linux-androideabi-nm $i | grep "$2") && echo -e '\033[0;33;1m/'$i/'\033[0m'
+			;;
+		*)
+			;;
+		esac
+	fi
+done
+}
+
+findSymbol $1 $2

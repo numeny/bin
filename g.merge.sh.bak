@@ -1,0 +1,22 @@
+#/bin/bash
+if [ $# -ne 1 ];then
+echo "Usage: $0 <merge_branch>"
+exit -1
+fi
+MERGE_BRANCH=$1
+echo "Merging -- branch[$1] to dev"
+git stash
+echo "Merging -- git fetch"
+git fetch
+echo "Merging -- git checkout $MERGE_BRANCH"
+git checkout $MERGE_BRANCH
+echo "Merging -- git reset --hard origin/$MERGE_BRANCH"
+git reset --hard origin/$MERGE_BRANCH
+echo "Merging -- git checkout dev"
+git checkout dev
+echo "Merging -- git reset --hard origin/dev"
+git reset --hard origin/dev
+echo "Merging -- git merge --no-ff $MERGE_BRANCH"
+git merge --no-ff $MERGE_BRANCH
+echo "Merging -- git commit --amend"
+git commit --amend

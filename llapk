@@ -1,0 +1,2 @@
+#/bin/bash
+ls -l ~/sogouwebview/huaweifrom4.2/BrowserActivity/build/outputs/apk/BrowserActivity-debug.apk

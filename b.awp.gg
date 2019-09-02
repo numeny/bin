@@ -1,0 +1,27 @@
+#/bin/bash
+#export SHELL_PATH=/home/bdg/ssd/chromium_56.0.2924.116/
+export SHELL_PATH=/home/bdg/ssd/shell/chromium_68.0.3440.106/
+
+#rm out/Release/libs_prebuilt/libs/ out/Release/libs_prebuilt/res/ -rf
+. sogou_webview/envsetup.sh
+echo "building ..."
+gg-awp
+#export GN_ARGS_BUILD_VERSION="\"1.2.0.0\""
+build
+if [[ $# -ne 0 ]];then
+echo "build ... Error"
+    exit -1;
+fi
+adb push out/Release/apks/awp_core.apk /sdcard/
+echo "building ... success"
+cd sogou_webview/awp_demo/
+gradle assemble
+if [[ $# -ne 0 ]];then
+echo "gradle assemble ... Error"
+    exit -1;
+fi
+adb install -r out/AWPDemo-debug.apk
+cd ../../
+ls -l sogou_webview/awp_demo/out/AWPDemo-debug.apk
+ls -l out/Release/apks/awp_core.apk
+adb shell ls -l /sdcard/awp_core.apk

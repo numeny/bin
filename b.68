@@ -1,0 +1,16 @@
+#/bin/bash
+#export SHELL_PATH=/home/bdg/ssd/chromium_56.0.2924.116/
+export SHELL_PATH=/home/bdg/ssd/shell/chromium_68.0.3440.106/
+
+#rm out/Release/libs_prebuilt/libs/ out/Release/libs_prebuilt/res/ -rf
+. sogou_webview/envsetup.sh
+echo "building ..."
+#export GN_ARGS_BUILD_VERSION="\"1.2.0.0\""
+build
+if [[ $# -ne 0 ]];then
+    exit -1;
+fi
+echo "building ... success"
+cp out/Release/libs_prebuilt/sogou_webview.aar $SHELL_PATH -ra
+ls -l out/Release/libs_prebuilt/sogou_webview.aar
+ls -l $SHELL_PATH/sogou_webview.aar

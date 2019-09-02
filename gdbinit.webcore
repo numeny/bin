@@ -1,0 +1,3 @@
+set solib-absolute-prefix /home/bdg/android/android43/out/target/product/crespo/symbols/system/lib/
+set solib-search-path /home/bdg/android/android43/out/target/product/crespo/symbols/system/lib/
+target remote :5039

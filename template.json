@@ -1,0 +1,6 @@
+{
+    "data_format": ["kind", "url", "css_parsing", "js", "js_init", "js_parse", "js_exec", "css_cal", "java_callback", "parse", "layout", "java_native", "resource_load", "timer", "cor  e_main", "record_content", "callback_proxy", "draw_content", "texture", "page_load", "first_shot"],
+    "report_format": ["page_load", "css_parsing", "js_exec", "css_cal", "layout", "record_content", "draw_content", "texture", "first_shot"],
+    "torlerance_range": 0.2,
+    "data_items": ["first_shot", "fully_load"]
+}

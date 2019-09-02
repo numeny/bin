@@ -1,0 +1,13 @@
+#!/bin/bash
+
+WORK_PATH=/home/bdg/downloads/apk/apk.new.phone
+FILE_LIST_TMP_PATH=/tmp/file.list.tmp
+
+cd $WORK_PATH
+ls -l | awk '{print $9}' > $FILE_LIST_TMP_PATH
+cat $FILE_LIST_TMP_PATH
+while read line
+do
+echo "adb shell install $line ..."
+adb install $WORK_PATH/$line 
+done < ${FILE_LIST_TMP_PATH}

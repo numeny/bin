@@ -1,0 +1,20 @@
+#/bin/bash
+ninja -C out/Release webview_api
+if [[ $? -ne 0 ]];then
+echo "xxxxxxxxxxxx buiding webview_api error xxxxxxxxxxxxxxxxxxxxx" 
+exit -1
+fi
+ninja -C out/Release sogou_webview_apk
+if [[ $? -ne 0 ]];then
+echo "xxxxxxxxxxxx buiding sogou_webview_apk error xxxxxxxxxxxxxxxxxxxxx" 
+exit -1
+fi
+echo "============ copying webview_api.jar =================="
+cp out/Release/gen/webview_api/webview_api.jar /home/bdg/ssd/shell/for_chrome_46_youkufix.bak/BrowserActivity/libs/webview_api.jar
+cp out/Release/gen/webview_api/webview_api.jar /home/bdg/sogouwebview/webviewdemo/./Demon/libs/webview_api.jar
+echo "============ adb.install.sh.sogou.webview =================="
+adb push out/Release/apks/SogouWebView.apk /sdcard/sogou/
+ls -lrt out/Release/apks/SogouWebView.apk
+adb shell ls -l /sdcard/sogou/SogouWebView.apk
+#adb.install.sh.sogou.webview
+echo "============ buiding success =================="

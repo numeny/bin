@@ -1,0 +1,3 @@
+set solib-absolute-prefix /home/bdg/ssd/chromium/src/out/Debug/lib
+set solib-search-path /home/bdg/ssd/chromium/src/out/Debug/lib
+target remote :5040

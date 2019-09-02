@@ -1,0 +1,4 @@
+#!/bin/bash
+adb.uninstall.sh.testshell
+adb install -r /home/bdg/ssd/chromium_68.0.3440.106/src/sogou_webview/test/out/TestShell-debug.apk
+adb shell am start -n com.sogou.webview.testshell/com.sogou.webview.testshell.TestShellActivity

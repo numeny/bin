@@ -1,0 +1,3 @@
+set solib-absolute-prefix /home/bdg/browser/chromium.56.0.2924.116.2/src/out/Default/lib.unstripped
+set solib-search-path /home/bdg/browser/chromium.56.0.2924.116.2/src/out/Default/lib.unstripped
+target remote :5040

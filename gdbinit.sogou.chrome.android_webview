@@ -1,0 +1,3 @@
+set solib-absolute-prefix /home/bdg/ssd/chromium.android_webview/src/out/Release/lib.unstripped/
+set solib-search-path /home/bdg/ssd/chromium.android_webview/src/out/Release/lib.unstripped/
+target remote :5040

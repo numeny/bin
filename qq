@@ -1,0 +1,3 @@
+#/bin/bash
+cd ~/tools/linuxqq_v1.0.2_i386
+~/tools/linuxqq_v1.0.2_i386/qq&
